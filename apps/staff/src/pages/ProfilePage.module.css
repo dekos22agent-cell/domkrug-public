@@ -1,0 +1,285 @@
+/**
+ * Профиль сотрудника УК: карточки данных, прав и безопасности.
+ *
+ * Сетка двухколоночная, но «Права» и «Безопасность» занимают всю ширину:
+ * список прав длинный, а форма пароля — не место для узкой колонки.
+ */
+
+.identity {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--brand-100);
+  color: var(--brand-700);
+  font-size: var(--text-md);
+  font-weight: 600;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.alert {
+  margin: var(--space-2) 0 0;
+}
+
+.cardWide {
+  grid-column: 1 / -1;
+}
+
+.row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--border);
+  font-size: var(--text-md);
+}
+
+.row:last-of-type {
+  border-bottom: none;
+}
+
+.label {
+  color: var(--text-secondary);
+  flex: none;
+}
+
+.value {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--space-1);
+  color: var(--text-primary);
+  font-weight: 500;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.hint {
+  margin: 0 0 var(--space-3);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: 100%;
+  min-width: 0;
+  max-width: 420px;
+}
+
+.formActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.subtitle {
+  margin: 0 0 var(--space-2);
+  font-size: var(--text-lg);
+  line-height: var(--leading-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* ─── Права ──────────────────────────────────────────────────────────── */
+
+/* Колонки, а не grid: группы прав разной высоты, и grid оставлял бы
+   пустые провалы под короткими группами. */
+.permissionGroups {
+  columns: 2;
+  column-gap: var(--space-6);
+}
+
+.permissionGroup {
+  break-inside: avoid;
+  margin-bottom: var(--space-4);
+  padding-left: var(--space-3);
+  border-left: 2px solid var(--brand-100);
+}
+
+.permissionGroupTitle {
+  margin: 0 0 var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.permissionList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.permissionItem {
+  font-size: var(--text-sm);
+  line-height: 1.4;
+  color: var(--text-secondary);
+}
+
+/* ─── Безопасность ───────────────────────────────────────────────────── */
+
+.securityGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: var(--space-6);
+}
+
+.securityGrid > * {
+  min-width: 0;
+}
+
+.twoFactor {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+  align-self: start;
+  padding: var(--space-4);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-md);
+  background: var(--brand-50);
+}
+
+.twoFactor .hint {
+  margin-bottom: 0;
+}
+
+.twoFactorActions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-2);
+  flex: none;
+}
+
+/* ─── Настройка второго фактора ──────────────────────────────────────── */
+
+.setupPanel {
+  margin-top: var(--space-5);
+  padding: var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg);
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin: 0;
+  padding-left: var(--space-4);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.secretRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.secret {
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text-primary);
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: var(--text-sm);
+  letter-spacing: 0.08em;
+  overflow-wrap: anywhere;
+}
+
+.otpauthLink {
+  font-size: var(--text-sm);
+  color: var(--brand-600);
+}
+
+.backupCodes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: var(--space-2);
+  margin: var(--space-3) 0;
+}
+
+.backupCodes code {
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text-primary);
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: var(--text-sm);
+  text-align: center;
+}
+
+.adminSection {
+  margin-top: var(--space-6);
+}
+
+.adminLinks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.adminLink {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.adminLink:hover {
+  background: var(--surface-soft);
+  border-color: var(--brand-500);
+}
+
+.adminHint {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .permissionGroups {
+    columns: 1;
+  }
+
+  .securityGrid {
+    grid-template-columns: 1fr;
+  }
+}

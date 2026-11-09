@@ -1,0 +1,248 @@
+/**
+ * Стили экрана «Доступ».
+ *
+ * Главное — большие кнопки: человек нажимает их стоя у двери, одной рукой,
+ * возможно в темноте и на морозе. Поэтому высота с запасом, контрастный фон
+ * и никаких мелких элементов рядом.
+ */
+
+.page {
+  max-width: var(--content-max-resident);
+  margin: 0 auto;
+}
+
+.group {
+  margin-bottom: var(--space-6);
+}
+
+.groupTitle {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.groupAddress {
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.points {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+
+@media (min-width: 560px) {
+  .points {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.point {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  min-height: 84px;
+  padding: var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  transition:
+    transform 0.1s ease,
+    box-shadow 0.1s ease,
+    border-color 0.1s ease;
+}
+
+.point:hover {
+  border-color: var(--brand-500);
+  box-shadow: var(--shadow-pop);
+}
+
+.point:active {
+  transform: scale(0.985);
+}
+
+.point:focus-visible {
+  outline: 2px solid var(--brand-600);
+  outline-offset: 2px;
+}
+
+.pointBusy {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+.pointDisabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.pointIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--brand-50);
+  color: var(--brand-600);
+}
+
+.pointBody {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.pointName {
+  font-size: var(--text-md);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.pointHint {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+}
+
+.pointAction {
+  margin-left: auto;
+  flex: none;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--brand-600);
+}
+
+/* ─── Уведомление о результате ─────────────────────────────────────────── */
+
+.toast {
+  position: sticky;
+  top: var(--space-2);
+  z-index: 5;
+  margin-bottom: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+.toastOk {
+  background: var(--brand-50);
+  border: 1px solid var(--brand-500);
+  color: var(--brand-700);
+}
+
+.toastError {
+  background: #fdecea;
+  border: 1px solid var(--status-rejected);
+  color: var(--status-rejected);
+}
+
+/* ─── Журнал ───────────────────────────────────────────────────────────── */
+
+.journal {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.event {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--border);
+  font-size: var(--text-sm);
+}
+
+.event:last-child {
+  border-bottom: none;
+}
+
+.eventName {
+  color: var(--text-primary);
+}
+
+.eventDot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: var(--space-2);
+  border-radius: 50%;
+  background: var(--status-done);
+  vertical-align: middle;
+}
+
+.eventDotError {
+  background: var(--status-rejected);
+}
+
+.eventDotDenied {
+  background: var(--status-progress);
+}
+
+.eventTime {
+  color: var(--text-muted);
+  white-space: nowrap;
+  font-size: var(--text-xs);
+}
+
+.empty {
+  padding: var(--space-6);
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+}
+
+.demoNote {
+  margin-top: var(--space-3);
+  font-size: var(--text-xs);
+  line-height: var(--leading-xs);
+  color: var(--text-muted);
+}
+
+/* ─── Проверка видеозвонка ──────────────────────────────────────────────── */
+
+.callCard {
+  padding: var(--space-4);
+  margin-bottom: var(--space-6);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg);
+}
+
+.callText {
+  margin: 0 0 var(--space-3);
+  font-size: var(--text-sm);
+  line-height: var(--leading-sm);
+  color: var(--text-secondary);
+}
+
+.callNotice {
+  margin: var(--space-3) 0 0;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  background: var(--brand-50);
+  color: var(--brand-700);
+  font-size: var(--text-sm);
+  font-weight: 500;
+}

@@ -1,0 +1,52 @@
+.toolbar {
+  margin-bottom: var(--space-4);
+}
+
+.alert {
+  margin-bottom: var(--space-4);
+}
+
+.person {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.person strong {
+  font-weight: 600;
+}
+
+.muted {
+  color: var(--text-secondary);
+  font-size: var(--text-xs);
+}
+
+.statusCell {
+  display: grid;
+  gap: 2px;
+  justify-items: start;
+}
+
+.reason {
+  max-width: 260px;
+  color: var(--text-secondary);
+  font-size: var(--text-xs);
+  overflow-wrap: anywhere;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+.drawerBody {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.drawerActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}

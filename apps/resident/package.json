@@ -1,0 +1,14 @@
+{
+  "name": "@liviti/resident",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint src",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "preview": "vite preview"
+  }
+}

@@ -1,0 +1,282 @@
+.shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  background: var(--bg);
+}
+
+/* ─── Шапка ───────────────────────────────────────────────── */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.headerInner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  max-width: var(--content-max-staff);
+  margin: 0 auto;
+  padding: var(--space-2) var(--space-4);
+  min-height: 56px;
+}
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  flex: none;
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--brand-700);
+  letter-spacing: -0.01em;
+}
+
+.brandMark {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--brand-600);
+  align-self: center;
+}
+
+.tenantName {
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ─── Навигация ───────────────────────────────────────────── */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.nav::-webkit-scrollbar {
+  display: none;
+}
+
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--control-height-staff);
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-md);
+  font-size: var(--text-md);
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.navLink:hover {
+  background: var(--brand-50);
+  color: var(--brand-700);
+  text-decoration: none;
+}
+
+.navLinkActive {
+  background: var(--brand-100);
+  color: var(--brand-700);
+  font-weight: 500;
+}
+
+/* ─── Пользователь ────────────────────────────────────────── */
+.user {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex: none;
+}
+
+.userName {
+  font-size: var(--text-md);
+  font-weight: 500;
+  color: var(--text-primary);
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.userName:hover {
+  color: var(--brand-700);
+  text-decoration: none;
+}
+
+/* Выход — иконкой: слово «Выйти» занимало место, которое нужнее имени */
+.logout {
+  padding: 0 var(--space-2);
+  color: var(--text-secondary);
+}
+
+.logout:hover {
+  color: var(--status-rejected);
+}
+
+/* ─── Контент ─────────────────────────────────────────────── */
+.main {
+  flex: 1;
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-4) var(--space-12);
+}
+
+.mainStaff {
+  max-width: var(--content-max-staff);
+}
+
+.mainResident {
+  max-width: var(--content-max-resident);
+}
+
+/* ─── Нижняя навигация (мобильный житель) ─────────────────── */
+.bottomNav {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .nav {
+    display: none;
+  }
+
+  .userName {
+    display: none;
+  }
+
+  .mainResident {
+    padding-bottom: calc(var(--space-16) + var(--space-6));
+  }
+
+  .bottomNav {
+    position: sticky;
+    bottom: 0;
+    display: flex;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: var(--space-1) 0;
+  }
+
+  .bottomNavLink {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    min-height: var(--touch-target);
+    padding: var(--space-1) 0;
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+  }
+
+  .bottomNavLink:hover {
+    text-decoration: none;
+  }
+
+  .bottomNavLinkActive {
+    color: var(--brand-700);
+    font-weight: 500;
+  }
+
+  .bottomNavIcon {
+    font-size: 18px;
+    line-height: 1;
+  }
+}
+
+/* ─── Переключатель квартир ─────────────────────────────────────────────── */
+
+.apartmentSwitch {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-right: var(--space-3);
+  min-width: 0;
+}
+
+.apartmentSwitchLabel {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.apartmentSelect {
+  max-width: 340px;
+  min-width: 0;
+  text-overflow: ellipsis;
+  min-height: 32px;
+  padding: 0 var(--space-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text-primary);
+  font: inherit;
+  font-size: var(--text-sm);
+}
+
+
+/* ─── Компактная навигация ──────────────────────────────────────────────── */
+
+/* На узких экранах верхнее меню прокручивается, но пункты не сжимаются:
+   иначе «Профиль» превращается в «П». */
+.nav {
+  scroll-behavior: smooth;
+}
+
+.navLink {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .headerInner {
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+  }
+
+  .navLink {
+    padding: 0 var(--space-2);
+    font-size: var(--text-sm);
+  }
+}
+
+/* Нижнее меню: пять пунктов на телефоне, каждый не уже 1/5 ширины */
+.bottomNav {
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+}
+
+@media (max-width: 400px) {
+  .bottomNav a {
+    font-size: 11px;
+  }
+}
+/* ─── Телефон: шапка не должна расползаться ─────────────────────────────── */
+
+@media (max-width: 560px) {
+  .apartmentSwitchLabel {
+    display: none;
+  }
+
+  .apartmentSelect {
+    max-width: 220px;
+    font-size: var(--text-xs);
+  }
+
+  .userName {
+    display: none;
+  }
+}

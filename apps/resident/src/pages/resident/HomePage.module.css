@@ -1,0 +1,359 @@
+/**
+ * Стили главного экрана жителя.
+ *
+ * Витрина сервисов: заголовок, начисления, сетка сервисов, последние заявки.
+ * Сервисы пока заглушки — они показывают направление продукта и не мешают
+ * пользоваться тем, что уже работает (заявки).
+ */
+
+/* ─── Заголовок ─────────────────────────────────────────────────────────── */
+
+.hero {
+  padding: var(--space-6) var(--space-4);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--brand-50) 0%, var(--surface) 70%);
+  border: 1px solid var(--border);
+  margin-bottom: var(--space-4);
+}
+
+.greeting {
+  font-size: var(--text-2xl);
+  line-height: var(--leading-2xl);
+  font-weight: 700;
+  margin: 0 0 var(--space-1);
+  color: var(--text-primary);
+}
+
+.address {
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: var(--leading-sm);
+  color: var(--text-secondary);
+}
+
+/* ─── Карточка начислений ───────────────────────────────────────────────── */
+
+.financeCard {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-6);
+}
+
+.financeItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.financeLabel {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.financeValue {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.financeValueAccent {
+  color: var(--brand-600);
+}
+
+.financeFoot {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+/* ─── Сетка сервисов ────────────────────────────────────────────────────── */
+
+.sectionHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.sectionTitle {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.services {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+  margin-bottom: var(--space-8);
+}
+
+.newsList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+.newsCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.newsCard:hover {
+  background: var(--surface-soft);
+  border-color: var(--brand-500);
+}
+
+.newsEmergency {
+  border-left: 3px solid var(--status-rejected);
+}
+
+.newsTitle {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.newsBody {
+  overflow: hidden;
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  line-height: var(--leading-sm);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.newsDate {
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+}
+
+@media (min-width: 640px) {
+  .services {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 900px) {
+  .services {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.service {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  min-height: var(--touch-target);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease,
+    border-color 0.12s ease;
+}
+
+.service:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-pop);
+  border-color: var(--brand-500);
+}
+
+.service:active {
+  transform: translateY(0);
+}
+
+.service:focus-visible {
+  outline: 2px solid var(--brand-600);
+  outline-offset: 2px;
+}
+
+/* Работающий сервис выделен, остальные приглушены */
+.serviceActive {
+  border-color: var(--brand-600);
+  background: var(--brand-50);
+}
+
+.serviceDisabled {
+  cursor: default;
+  opacity: 0.75;
+}
+
+.serviceDisabled:hover {
+  transform: none;
+  box-shadow: var(--shadow-card);
+  border-color: var(--border);
+}
+
+.serviceIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: var(--bg);
+  color: var(--text-secondary);
+}
+
+.serviceActive .serviceIcon {
+  background: var(--brand-600);
+  color: #fff;
+}
+
+.serviceTitle {
+  font-size: var(--text-sm);
+  line-height: var(--leading-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.serviceHint {
+  font-size: var(--text-xs);
+  line-height: var(--leading-xs);
+  color: var(--text-secondary);
+}
+
+.soon {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: var(--bg);
+  border-radius: var(--radius-pill);
+  padding: 2px 6px;
+}
+
+@media (max-width: 480px) {
+  .financeCard {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .financeValue {
+    font-size: var(--text-md);
+  }
+}
+
+/* ─── Быстрые кнопки доступа ────────────────────────────────────────────── */
+
+.quick {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.quickButton {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-height: 76px;
+  padding: var(--space-4);
+  border: 1px solid var(--brand-600);
+  border-radius: var(--radius-lg);
+  background: var(--brand-50);
+  box-shadow: var(--shadow-card);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.quickButton:active {
+  transform: scale(0.98);
+}
+
+.quickButton:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.quickName {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.quickAction {
+  font-size: var(--text-xs);
+  color: var(--brand-700);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.quickToast {
+  margin: 0 0 var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--brand-50);
+  border: 1px solid var(--brand-500);
+  color: var(--brand-700);
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+/* Плашка «квартира не ваша»: доступ выдан другим человеком */
+.sharedNote {
+  display: inline-block;
+  margin: var(--space-2) 0 0;
+  padding: var(--space-1) var(--space-3);
+  border-radius: 999px;
+  background: var(--surface-muted, #f1f5f4);
+  border: 1px solid var(--border);
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+}
+/* Ссылка «Добавить квартиру»: доступна всегда, когда человек где-то собственник */
+.addApartment {
+  display: inline-block;
+  margin-top: var(--space-3);
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--brand-600);
+  font: inherit;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.addApartment:hover {
+  text-decoration: underline;
+}

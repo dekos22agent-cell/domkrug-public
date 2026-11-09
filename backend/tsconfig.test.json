@@ -1,0 +1,12 @@
+{
+  "//": "Проверка типов для тестов. Отдельный файл, потому что основной tsconfig",
+  "//2": "собирает только src (rootDir=src) и не должен тянуть тесты в сборку.",
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "rootDir": ".",
+    "types": ["node"]
+  },
+  "include": ["src/**/*.ts", "tests/**/*.ts", "vitest.config.ts"],
+  "exclude": ["node_modules", "dist"]
+}

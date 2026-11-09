@@ -1,0 +1,38 @@
+/* Бейдж статуса: цвет + текст всегда вместе (DESIGN.md п. 5.3). */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-sm);
+  line-height: var(--leading-sm);
+  font-weight: 500;
+  /* Фон — тот же цвет с прозрачностью, текст — сам цвет.
+     Так бейдж читается и на белом, и на сером фоне. */
+  background: color-mix(in srgb, var(--badge-color) 12%, transparent);
+  color: var(--badge-color);
+  border: 1px solid color-mix(in srgb, var(--badge-color) 28%, transparent);
+  white-space: nowrap;
+}
+
+/* Точка-маркер: дополнительный признак, не единственный.
+   Для пользователей, которые плохо различают оттенки, важна подпись. */
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--badge-color);
+  flex: none;
+}
+
+/* Аварийная заявка — красная заливка, заметная в списке */
+.emergency {
+  background: var(--emergency);
+  color: #fff;
+  border-color: var(--emergency);
+}
+
+.emergency .dot {
+  background: #fff;
+}

@@ -1,0 +1,164 @@
+/*
+ * Страница 404: карточка по центру, иллюстрация «дверь с панелью 404».
+ * Цвета берём из токенов приложения, чтобы экран не выбивался из продукта.
+ */
+
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: min(72vh, 640px);
+  padding: var(--space-5, 32px) var(--space-3, 16px);
+}
+
+.card {
+  width: 100%;
+  max-width: 520px;
+  text-align: center;
+}
+
+.art {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--space-3, 16px);
+}
+
+.svg {
+  width: min(320px, 78vw);
+  height: auto;
+  overflow: visible;
+}
+
+/* ─── Цвета сцены ─────────────────────────────────────────────────── */
+.wall {
+  fill: var(--brand-100, #e6f4ee);
+}
+
+.frame {
+  fill: var(--brand-900, #0f3d2e);
+}
+
+.door {
+  fill: var(--brand-700, #1f6f54);
+}
+
+.handle {
+  fill: #f3f7f4;
+  opacity: 0.9;
+}
+
+.panel {
+  fill: var(--brand-900, #0f3d2e);
+}
+
+.screen {
+  fill: #0b2a21;
+}
+
+.code {
+  fill: #7fd3b1;
+  font-family: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.keys rect {
+  fill: #2f5d4c;
+}
+
+/* ─── Гость ───────────────────────────────────────────────────────── */
+.visitor circle {
+  fill: #f0b27a;
+}
+
+.visitor rect {
+  fill: #b5551f;
+}
+
+.visitor .tape {
+  stroke: #f6dfc6;
+  stroke-width: 3;
+  fill: none;
+}
+
+/* ─── Растение ────────────────────────────────────────────────────── */
+.plant rect {
+  fill: #a0561f;
+}
+
+.plant path {
+  fill: var(--brand-500, #3aa37e);
+}
+
+/* ─── Текст ───────────────────────────────────────────────────────── */
+.code404 {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--brand-600, #2a8566);
+}
+
+.title {
+  margin: 6px 0 0;
+  font-size: clamp(24px, 4vw, 32px);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--text, #14231d);
+}
+
+.description {
+  margin: var(--space-2, 12px) auto 0;
+  max-width: 420px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--text-muted, #5b6f68);
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2, 12px);
+  margin-top: var(--space-4, 24px);
+  flex-wrap: wrap;
+}
+
+
+/* Кнопки свои: страницу 404 показывают и приложение, и лендинг, а у них
+   разные наборы токенов. Так кнопки выглядят одинаково везде. */
+.btn {
+  min-height: 44px;
+  padding: 0 22px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.12s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btnPrimary {
+  background: var(--brand-700, #1f6f54);
+  color: #fff;
+}
+
+.btnPrimary:hover {
+  background: var(--brand-600, #2a8566);
+}
+
+.btnGhost {
+  background: transparent;
+  border-color: #dfe8e4;
+  color: var(--text, #14231d);
+}
+
+.btnGhost:hover {
+  border-color: var(--brand-500, #3aa37e);
+  color: var(--brand-700, #1f6f54);
+}

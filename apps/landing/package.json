@@ -1,0 +1,11 @@
+{
+  "name": "@liviti/landing",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 5175",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview"
+  }
+}

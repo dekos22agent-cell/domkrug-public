@@ -1,0 +1,128 @@
+.shell {
+  min-height: 620px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  color: var(--brand-700);
+}
+
+.mark {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-xs);
+  background: var(--liviti-lime);
+  color: var(--liviti-ink);
+  font-size: 15px;
+  line-height: 1;
+}
+
+.address {
+  color: var(--text-secondary);
+  font-size: var(--text-xs);
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin-left: auto;
+}
+
+.nav a,
+.bottomNav a {
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-pill);
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  text-decoration: none;
+}
+
+.nav a:hover,
+.bottomNav a:hover {
+  background: var(--surface-soft);
+  color: var(--text-primary);
+}
+
+.nav a.active,
+.bottomNav a.active {
+  background: var(--brand-50);
+  color: var(--brand-700);
+  font-weight: 600;
+}
+
+.user {
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+}
+
+.main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-4) var(--space-16);
+}
+
+.bottomNav {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .shell {
+    min-height: 0;
+  }
+
+  .header {
+    gap: var(--space-2);
+    padding: var(--space-3);
+  }
+
+  .nav,
+  .user {
+    display: none;
+  }
+
+  .address {
+    margin-left: auto;
+  }
+
+  .main {
+    padding: var(--space-4) var(--space-3) var(--space-20);
+  }
+
+  .bottomNav {
+    position: sticky;
+    bottom: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--border);
+    background: var(--surface);
+  }
+
+  .bottomNav a {
+    min-height: 56px;
+    display: grid;
+    place-items: center;
+    border-radius: 0;
+    font-size: var(--text-xs);
+  }
+}

@@ -1,0 +1,170 @@
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  padding: var(--space-6) var(--space-4);
+  background: var(--bg);
+}
+
+.card {
+  width: 100%;
+  max-width: 400px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-8) var(--space-6) var(--space-6);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  color: var(--brand-700);
+  letter-spacing: -0.02em;
+}
+
+.brandMark {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--brand-600);
+}
+
+.tagline {
+  margin-bottom: var(--space-6);
+  text-align: center;
+  font-size: var(--text-sm);
+  line-height: var(--leading-sm);
+  color: var(--text-secondary);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* Ошибка входа — текстом под формой, не всплывающим окном (FRONTEND-PLAN п. 4) */
+.formError {
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--status-rejected) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--status-rejected) 28%, transparent);
+  color: var(--status-rejected);
+  font-size: var(--text-sm);
+  line-height: var(--leading-sm);
+}
+
+.hint {
+  margin-top: var(--space-6);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border);
+  font-size: var(--text-sm);
+  line-height: var(--leading-sm);
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* Переключение «вход ↔ регистрация» */
+.switchLine {
+  margin-top: var(--space-4);
+  font-size: var(--text-base);
+  line-height: var(--leading-base);
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.switchLink {
+  color: var(--brand-600);
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+/* Согласие на обработку ПДн: текст мелкий, но зона нажатия — полноценная */
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg);
+  cursor: pointer;
+  min-height: var(--touch-target);
+}
+
+.consentChecked {
+  border-color: var(--brand-600);
+  background: var(--brand-50);
+}
+
+.consentInvalid {
+  border-color: var(--status-rejected);
+  background: color-mix(in srgb, var(--status-rejected) 6%, transparent);
+}
+
+.consentBox {
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  flex: none;
+  accent-color: var(--brand-600);
+  cursor: pointer;
+}
+
+.consentText {
+  font-size: var(--text-sm);
+  line-height: var(--leading-sm);
+  color: var(--text-secondary);
+}
+
+.consentText strong {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.fieldHint {
+  font-size: var(--text-sm);
+  line-height: var(--leading-sm);
+  color: var(--text-muted);
+}
+
+.hintTitle {
+  display: block;
+  margin-bottom: var(--space-1);
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.hintCode {
+  font-family: ui-monospace, 'Cascadia Mono', Consolas, monospace;
+  font-size: var(--text-xs);
+  background: var(--bg);
+  padding: 1px 4px;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+}
+
+
+/* Ссылка «На главную»: с формы входа человек должен уметь уйти на сайт */
+.homeLine {
+  margin: var(--space-4, 24px) 0 0;
+  text-align: center;
+  font-size: var(--text-sm, 14px);
+}
+
+.homeLink {
+  color: var(--text-muted, #5b6f68);
+  text-decoration: none;
+  border-bottom: 1px dashed currentColor;
+}
+
+.homeLink:hover {
+  color: var(--brand-700, #1f6f54);
+}

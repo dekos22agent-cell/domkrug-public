@@ -1,0 +1,191 @@
+.root {
+  position: relative;
+}
+
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* 44px — минимальная цель для пальца (DESIGN.md) */
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 var(--space-2);
+  border: none;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.button:hover {
+  background: var(--bg-hover, rgba(0, 0, 0, 0.04));
+  color: var(--text-primary);
+}
+
+.button:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.buttonActive {
+  color: var(--brand-600);
+}
+
+.icon {
+  display: block;
+  width: 22px;
+  height: 22px;
+}
+
+/* Счётчик непрочитанных: цвет и число, а не только точка — цвет не должен
+   быть единственным носителем смысла */
+.badge {
+  position: absolute;
+  top: 4px;
+  right: 2px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 9px;
+  background: var(--danger, #b3261e);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 18px;
+  text-align: center;
+}
+
+.panel {
+  position: absolute;
+  top: calc(100% + var(--space-2));
+  right: 0;
+  z-index: 60;
+  width: 360px;
+  max-width: calc(100vw - 2 * var(--space-3));
+  max-height: 70vh;
+  overflow-y: auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16);
+}
+
+/* В боковом меню УК колокольчик стоит внизу: панель вниз уходит за экран,
+   поэтому открываем её вверх и вправо, в сторону рабочей области. */
+.panelTop {
+  top: auto;
+  right: auto;
+  bottom: calc(100% + var(--space-2));
+  left: 0;
+}
+
+.panelHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  background: var(--surface);
+}
+
+.panelTitle {
+  font-size: var(--text-md);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.linkButton {
+  border: none;
+  background: none;
+  padding: 0;
+  color: var(--brand-600);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.panelFoot {
+  padding: var(--space-3) var(--space-4);
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+.linkButton:hover {
+  text-decoration: underline;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  border: none;
+  border-bottom: 1px solid var(--border);
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.item:hover {
+  background: var(--bg);
+}
+
+/* В списке только непрочитанное, поэтому подсветка «непрочитанного» не нужна:
+   она была бы у каждой строки и перестала что-либо значить. Различие несут
+   жирный заголовок и само исчезновение строки после просмотра. */
+.itemTitle {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.itemBody {
+  font-size: var(--text-sm);
+  line-height: var(--leading-sm);
+  color: var(--text-secondary);
+}
+
+.itemTime {
+  margin-top: 2px;
+  font-size: var(--text-xs, 12px);
+  color: var(--text-muted);
+}
+
+.empty {
+  padding: var(--space-6) var(--space-4);
+  text-align: center;
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+}
+
+/* На телефоне панель раскрывается почти на всю ширину: 360px в узкий
+   экран не влезают */
+@media (max-width: 560px) {
+  .panel,
+  .panelTop {
+    position: fixed;
+    top: 64px;
+    left: var(--space-3);
+    right: var(--space-3);
+    bottom: auto;
+    width: auto;
+    max-width: none;
+    max-height: calc(100vh - 80px);
+  }
+}

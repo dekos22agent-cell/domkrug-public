@@ -1,0 +1,35 @@
+services:
+  # ─── PostgreSQL ──────────────────────────────────────────────
+  postgres:
+    image: postgres:16-alpine
+    container_name: domkrug-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-domkrug}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-domkrug_dev_password}
+      POSTGRES_DB: ${POSTGRES_DB:-domkrug_dev}
+      # Русская локаль для сортировки адресов и ФИО
+      LANG: ru_RU.utf8
+    ports:
+      # Только localhost: база не должна быть доступна из интернета.
+      # На сервере порт 5432 не должен отвечать снаружи ни при каких настройках
+      # файрвола — это второй рубеж, а не единственный.
+      - "127.0.0.1:${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-domkrug} -d ${POSTGRES_DB:-domkrug_dev}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  # ─── S3-совместимое хранилище ────────────────────────────────
+  # Не поднимаем: фото заявок хранятся на диске (см. STORAGE_DIR),
+  # а неиспользуемый сервис без авторизации слушал бы все интерфейсы.
+  # Если появится S3 — вернуть отдельным сервисом с привязкой к 127.0.0.1
+  # и авторизацией.
+
+volumes:
+  pgdata:
+    name: domkrug_pgdata

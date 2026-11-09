@@ -1,0 +1,43 @@
+.toolbar {
+  margin-bottom: var(--space-4);
+}
+
+.number {
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.ticketTitle {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.titleLink {
+  justify-self: start;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text-primary);
+  font: inherit;
+  font-weight: 600;
+  text-align: left;
+}
+
+.titleLink:hover {
+  color: var(--brand-700);
+  text-decoration: underline;
+}
+
+.address {
+  color: var(--text-secondary);
+  font-size: var(--text-xs);
+}
+
+.statusCell {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-1);
+}

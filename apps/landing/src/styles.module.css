@@ -1,0 +1,1293 @@
+/*
+ * Лендинг liviti.
+ *
+ * Отдельное приложение: у продукта два клиента (житель и УК), а на главной
+ * домене нужна витрина, которая объясняет, что это, за две минуты. Стили
+ * свои, чтобы правка текста не тянула пересборку приложений.
+ */
+:root {
+  /* Брендовые токены приходят из @ui/styles/tokens.css (main.tsx). */
+  --text: var(--text-primary);
+  --text-muted: var(--text-secondary);
+  --surface-muted: var(--surface-soft);
+  --radius: var(--radius-lg);
+  --radius-lg: var(--radius-xl);
+  --shadow: var(--shadow-md);
+  --max: var(--content-max-marketing);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  /* Ничего не должно вылезать за экран: на телефоне это выглядит как поломка */
+  overflow-x: clip;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+p {
+  margin: 0;
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 20px;
+  /* Иначе длинные строки распирают контейнер шире экрана */
+  min-width: 0;
+}
+
+/* ─── Шапка ─────────────────────────────────────────────────────────── */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+.headerInner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  height: 68px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: -0.02em;
+}
+
+.brandMark {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-xs);
+  background: var(--liviti-lime);
+  color: var(--liviti-ink);
+  font-family: var(--font-heading);
+  font-size: 15px;
+  line-height: 1;
+}
+
+.nav {
+  display: flex;
+  gap: 22px;
+  margin-left: auto;
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+.nav a:hover {
+  color: var(--brand-700);
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Вошедшего показываем именем и маленькой ссылкой «Выйти»: главная не
+   должна предлагать «Войти», если человек уже вошёл. */
+.headerUser {
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.headerUser:hover {
+  color: var(--brand-700);
+}
+
+.headerLogout {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.headerLogout:hover {
+  color: var(--status-rejected);
+  text-decoration: underline;
+}
+
+/* ─── Кнопки ────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: transform 0.12s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btnPrimary {
+  background: var(--brand-700);
+  color: #fff;
+}
+
+.btnPrimary:hover {
+  background: var(--brand-600);
+}
+
+.btnGhost {
+  background: transparent;
+  border-color: var(--border);
+  color: var(--text);
+}
+
+.btnGhost:hover {
+  border-color: var(--brand-500);
+  color: var(--brand-700);
+}
+
+/* ─── Хиро ──────────────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 86px 0 72px;
+  background: var(--liviti-ink);
+  color: #fff;
+}
+
+.heroImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
+}
+
+.heroShade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(20, 43, 53, 0.76) 0%, rgba(20, 43, 53, 0.52) 42%, rgba(20, 43, 53, 0.1) 100%),
+    linear-gradient(0deg, rgba(20, 43, 53, 0.55) 0%, transparent 55%);
+}
+
+.hero > .wrap {
+  position: relative;
+  z-index: 1;
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: center;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.hero h1 {
+  margin-top: 18px;
+  color: #fff;
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 800;
+}
+
+.heroLead {
+  margin-top: 14px;
+  font-family: var(--font-heading);
+  font-size: clamp(20px, 2.2vw, 26px);
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--liviti-lime);
+}
+
+.heroText {
+  margin-top: 16px;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.82);
+  max-width: 560px;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.heroNote {
+  margin-top: 16px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.hero .btnPrimary {
+  background: var(--liviti-lime);
+  color: var(--liviti-ink);
+}
+
+.hero .btnPrimary:hover {
+  background: #d4eea4;
+}
+
+.hero .btnGhost {
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #fff;
+}
+
+.hero .btnGhost:hover {
+  border-color: var(--liviti-lime);
+  color: var(--liviti-lime);
+}
+
+/* ─── Визуал героя: дашборд УК + телефон жителя ────────────────────── */
+.heroVisual {
+  position: relative;
+  min-height: 540px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.dashboardMock {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: min(430px, 88%);
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  background: var(--surface);
+  box-shadow: var(--shadow-lg);
+  transform: rotate(-1.2deg);
+}
+
+.dashTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.dashBrand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.dashMark {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  background: var(--liviti-lime);
+  color: var(--liviti-ink);
+  font-family: var(--font-heading);
+  font-size: 12px;
+}
+
+.dashDemo {
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--brand-50);
+  color: var(--brand-700);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.dashHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 0 10px;
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+.dashHead strong {
+  color: var(--text-primary);
+  font-size: 18px;
+}
+
+.dashRows {
+  display: grid;
+  gap: 2px;
+}
+
+.dashRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 9px 0;
+  border-top: 1px solid var(--border);
+  color: var(--text-primary);
+  font-size: 12px;
+}
+
+.dashStatus,
+.dashStatusWarn {
+  flex: none;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.dashStatus {
+  background: var(--brand-50);
+  color: var(--brand-700);
+}
+
+.dashStatusWarn {
+  background: #fdf3e2;
+  color: #8a5a00;
+}
+
+.dashFoot {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 10px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 11px;
+}
+
+.dashFoot strong {
+  color: var(--text-primary);
+  font-size: 13px;
+}
+
+.heroVisual .phone {
+  position: relative;
+  z-index: 1;
+  margin-left: auto;
+  justify-self: auto;
+}
+
+/* Карточка-макет телефона: показывает экран открытия двери */
+.phone {
+  justify-self: end;
+  width: 300px;
+  padding: 18px;
+  border-radius: 34px;
+  background: var(--brand-900);
+  box-shadow: var(--shadow);
+}
+
+.phoneScreen {
+  border-radius: 22px;
+  background: var(--surface);
+  color: var(--text-primary);
+  padding: 18px;
+  min-height: 430px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.phoneTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.phoneTitle {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.callCard {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px;
+  background: var(--brand-50);
+}
+
+.callName {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.callMeta {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.callActions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.miniBtn {
+  flex: 1;
+  min-height: 40px;
+  border-radius: 10px;
+  border: none;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: default;
+}
+
+.miniPrimary {
+  background: var(--brand-700);
+  color: #fff;
+}
+
+.miniGhost {
+  background: #fff;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 14px;
+}
+
+.rowDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--brand-500);
+  display: inline-block;
+  margin-right: 8px;
+}
+
+/* ─── Секции ────────────────────────────────────────────────────────── */
+.section {
+  padding: 72px 0;
+}
+
+.sectionMuted {
+  background: var(--surface-muted);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.sectionHead {
+  max-width: 720px;
+  margin-bottom: 36px;
+}
+
+.sectionKicker {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--brand-600);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.sectionHead h2 {
+  font-size: clamp(32px, 3.4vw, 44px);
+  font-weight: 800;
+}
+
+.sectionHead p {
+  margin-top: 12px;
+  color: var(--text-muted);
+  font-size: 17px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  box-shadow: var(--shadow-sm);
+}
+
+.cardIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: var(--brand-100);
+  color: var(--brand-700);
+  font-size: 20px;
+  margin-bottom: 14px;
+}
+
+.card h3 {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.card p {
+  margin-top: 8px;
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+/* ─── Три контура платформы ──────────────────────────────────────── */
+.pillar {
+  display: flex;
+  flex-direction: column;
+  padding: 26px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+
+.pillarNum {
+  color: var(--brand-600);
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.pillar h3 {
+  margin-top: 18px;
+  font-size: 21px;
+}
+
+.pillar p {
+  margin-top: 10px;
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.pillarList {
+  display: grid;
+  gap: 8px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.pillarList li {
+  padding-left: 16px;
+  position: relative;
+}
+
+.pillarList li::before {
+  position: absolute;
+  top: 0.55em;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 1px;
+  background: var(--liviti-lime);
+  content: '';
+}
+
+/* ─── Редакционный фото-блок ─────────────────────────────────────── */
+.editorial {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  min-height: 520px;
+  background: var(--surface);
+}
+
+.editorialMedia {
+  position: relative;
+  min-width: 0;
+  min-height: 520px;
+  overflow: hidden;
+}
+
+.editorialMedia img {
+  display: block;
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+}
+
+.editorialBody {
+  align-self: center;
+  max-width: 540px;
+  padding: 64px max(20px, 6vw) 64px 48px;
+}
+
+.editorialBody h2 {
+  margin-top: 6px;
+  font-size: clamp(30px, 3.4vw, 46px);
+  line-height: 1.12;
+  font-weight: 800;
+}
+
+.editorialBody p {
+  margin-top: 18px;
+  color: var(--text-muted);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.editorialCaption {
+  color: var(--text-secondary) !important;
+  font-size: 13px !important;
+  font-weight: 600;
+}
+
+/* ─── Инфраструктура с фото ─────────────────────────────────────── */
+.infraFeature {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.infraMedia {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--surface-soft);
+  aspect-ratio: 4 / 3;
+}
+
+.infraMedia img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.infraFeature .infraGrid {
+  grid-template-columns: 1fr 1fr;
+  align-content: center;
+}
+
+/* ─── Пилотные объекты ──────────────────────────────────────────── */
+.pilotGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.pilotCard {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+
+.pilotMedia {
+  aspect-ratio: 16 / 8;
+  overflow: hidden;
+  background: var(--surface-soft);
+}
+
+.pilotMedia img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pilotBody {
+  padding: 24px;
+}
+
+.pilotLabel {
+  color: var(--brand-600);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pilotBody h3 {
+  margin-top: 8px;
+  font-size: 24px;
+}
+
+.pilotBody p {
+  margin-top: 8px;
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+.pilotNote {
+  display: block;
+  margin-top: 18px;
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.pilotCardMuted {
+  display: flex;
+  align-items: flex-end;
+  background: var(--liviti-ink);
+  border-color: var(--liviti-ink);
+  color: #fff;
+}
+
+.pilotCardMuted .pilotLabel {
+  color: var(--liviti-lime);
+}
+
+.pilotCardMuted .pilotBody p {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.pilotCardMuted .pilotNote {
+  color: rgba(255, 255, 255, 0.52);
+}
+
+/* ─── Детали: паркинг + входная группа ────────────────────────────── */
+.details {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.detailsMedia {
+  position: relative;
+  min-height: 560px;
+  background: var(--surface-soft);
+}
+
+.detailsWide {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 560px;
+  object-fit: cover;
+}
+
+.detailsPortrait {
+  position: absolute;
+  right: 28px;
+  bottom: 28px;
+  width: 30%;
+  max-width: 240px;
+  border: 6px solid var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  object-fit: cover;
+}
+
+.detailsBody {
+  align-self: center;
+  padding: 64px max(20px, 6vw) 64px 48px;
+}
+
+.detailsBody h2 {
+  margin-top: 6px;
+  font-size: clamp(30px, 3.2vw, 44px);
+  line-height: 1.12;
+  font-weight: 800;
+}
+
+.detailsBody p {
+  margin-top: 18px;
+  color: var(--text-muted);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* ─── Два клиента ───────────────────────────────────────────────────── */
+.twoCols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.roleCard {
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.roleCardDark {
+  background: var(--brand-900);
+  color: #fff;
+  border-color: var(--brand-900);
+}
+
+.roleCardDark p,
+.roleCardDark li {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.roleLabel {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  opacity: 0.8;
+}
+
+.roleCard h3 {
+  margin-top: 10px;
+  font-size: 24px;
+}
+
+.roleLead {
+  margin-top: 10px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.roleCardDark .roleLead {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.roleCard ul {
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+.roleCard li::before {
+  content: '✓';
+  color: var(--brand-500);
+  font-weight: 700;
+  margin-right: 10px;
+}
+
+.roleCardDark li::before {
+  color: var(--liviti-lime);
+}
+
+.roleActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.roleCardDark .btnPrimary,
+.ctaBox .btnPrimary {
+  background: var(--liviti-lime);
+  color: var(--liviti-ink);
+}
+
+.roleCardDark .btnPrimary:hover,
+.ctaBox .btnPrimary:hover {
+  background: #d4eea4;
+}
+
+.roleCardDark .btnGhost {
+  border-color: rgba(255, 255, 255, 0.32);
+  color: #fff;
+}
+
+.roleCardDark .btnGhost:hover {
+  border-color: var(--liviti-lime);
+  color: var(--liviti-lime);
+}
+
+.ctaBox .btnGhost {
+  border-color: rgba(255, 255, 255, 0.32);
+  color: #fff;
+}
+
+.ctaBox .btnGhost:hover {
+  border-color: var(--liviti-lime);
+  color: var(--liviti-lime);
+}
+
+/* ─── Шаги ──────────────────────────────────────────────────────────── */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  counter-reset: step;
+}
+
+.step {
+  position: relative;
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.stepNum {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--brand-700);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.step h3 {
+  font-size: 17px;
+}
+
+.step p {
+  margin-top: 8px;
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+/* ─── Инфраструктура ──────────────────────────────────────────────── */
+.infraGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.infraItem {
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.infraItem h3 {
+  font-size: 16px;
+}
+
+.infraItem p {
+  margin-top: 8px;
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ─── Доверие ───────────────────────────────────────────────────────── */
+.trust {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.trustItem {
+  padding: 18px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.trustItem strong {
+  display: block;
+  color: var(--text);
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+/* ─── CTA ───────────────────────────────────────────────────────────── */
+.cta {
+  padding: 56px 0 72px;
+}
+
+.ctaBox {
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  background:
+    radial-gradient(600px 260px at 10% 0%, var(--brand-600), transparent 60%),
+    var(--brand-900);
+  color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ctaBox h2 {
+  font-size: clamp(24px, 3vw, 32px);
+}
+
+.ctaBox .sectionKicker {
+  margin-bottom: 8px;
+  color: var(--liviti-lime);
+}
+
+.demoActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.demoNote {
+  margin-top: 14px;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 13px;
+}
+
+.demoNote a {
+  color: var(--liviti-lime);
+}
+
+.ctaBox p {
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.72);
+  max-width: 560px;
+}
+
+/* ─── Футер ─────────────────────────────────────────────────────────── */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 28px 0 40px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.footerInner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footerLinks {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+/* ─── Адаптив ───────────────────────────────────────────────────────── */
+@media (max-width: 980px) {
+  .heroGrid,
+  .twoCols {
+    grid-template-columns: 1fr;
+  }
+
+  .heroVisual {
+    min-height: 0;
+    margin-top: 28px;
+  }
+
+  .dashboardMock {
+    display: none;
+  }
+
+  .heroVisual .phone {
+    margin: 0 auto;
+  }
+
+  .cards,
+  .steps,
+  .infraGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .infraFeature {
+    grid-template-columns: 1fr;
+  }
+
+  .infraMedia {
+    aspect-ratio: 16 / 9;
+  }
+
+  .infraMedia img {
+    min-height: 0;
+  }
+
+  .editorial {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .editorialMedia {
+    aspect-ratio: 16 / 9;
+    min-height: 0;
+  }
+
+  .editorialMedia img {
+    height: 100%;
+  }
+
+  .editorialBody {
+    max-width: none;
+    padding: 40px 20px;
+  }
+
+  .details {
+    grid-template-columns: 1fr;
+  }
+
+  .detailsMedia {
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+  }
+
+  .detailsWide {
+    min-height: 0;
+    height: 100%;
+  }
+
+  .detailsBody {
+    padding: 40px 20px;
+  }
+
+  .detailsPortrait {
+    right: 16px;
+    bottom: 16px;
+    width: 34%;
+  }
+
+  .trust {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .nav {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero h1 {
+    font-size: 40px;
+  }
+
+  .heroLead {
+    font-size: 20px;
+  }
+
+  .heroActions .btn {
+    width: 100%;
+  }
+
+  .cards,
+  .steps,
+  .infraGrid,
+  .infraFeature .infraGrid,
+  .trust,
+  .pilotGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .roleActions,
+  .demoActions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .roleActions .btn,
+  .demoActions .btn {
+    width: 100%;
+  }
+
+  .hero {
+    padding: 48px 0 40px;
+  }
+
+  .heroShade {
+    background: linear-gradient(0deg, rgba(20, 43, 53, 0.92) 0%, rgba(20, 43, 53, 0.62) 100%);
+  }
+
+  .section {
+    padding: 52px 0;
+  }
+
+  .ctaBox {
+    padding: 28px;
+  }
+
+  .actions .btnGhost {
+    display: none;
+  }
+}

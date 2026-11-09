@@ -1,0 +1,30 @@
+.root {
+  position: relative;
+  display: inline-flex;
+}
+
+.panel {
+  position: absolute;
+  top: calc(100% + var(--space-2));
+  z-index: 70;
+  width: max-content;
+  max-width: min(320px, calc(100vw - 2 * var(--space-4)));
+  padding: var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-md);
+}
+
+.panel:focus {
+  outline: var(--focus-width) solid var(--focus);
+  outline-offset: 2px;
+}
+
+.start {
+  left: 0;
+}
+
+.end {
+  right: 0;
+}

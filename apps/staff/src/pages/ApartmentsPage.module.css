@@ -1,0 +1,132 @@
+.page {
+  max-width: var(--content-max-staff);
+  margin: 0 auto;
+}
+
+.notice {
+  margin-bottom: var(--space-4);
+}
+
+.hint {
+  margin: 0 0 var(--space-4);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.toolbar {
+  margin-bottom: var(--space-3);
+}
+
+.counter {
+  margin: 0 0 var(--space-3);
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+}
+
+.number {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.numberButton {
+  display: inline-flex;
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.numberButton:hover .number {
+  color: var(--brand-700);
+  text-decoration: underline;
+}
+
+.kind {
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+
+.formActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding-top: var(--space-2);
+}
+
+@media (min-width: 520px) {
+  .formGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.residents {
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+  font-weight: 400;
+}
+
+.muted {
+  color: var(--text-secondary);
+}
+
+.roomInput {
+  width: 100%;
+  min-height: 40px;
+  padding: 0 var(--space-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text-primary);
+  font: inherit;
+  font-size: var(--text-sm);
+}
+
+.roomInput:focus-visible {
+  outline: var(--focus-width) solid var(--focus);
+  outline-offset: 1px;
+}
+
+/* Пустой номер подсвечиваем: пока его нет, звонок в квартиру не придёт */
+.roomInputEmpty {
+  border-color: var(--status-pending, #c9a227);
+  background: #fffdf3;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.saved {
+  color: var(--brand-600);
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  .actions {
+    justify-content: flex-start;
+  }
+
+  .number {
+    white-space: normal;
+  }
+}

@@ -1,0 +1,79 @@
+# ─── Node / npm ───────────────────────────────────────────
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+.pnpm-debug.log
+
+# ─── Сборка ───────────────────────────────────────────────
+dist/
+build/
+out/
+.next/
+coverage/
+*.tsbuildinfo
+.vite/
+
+# ─── Секреты и окружение ──────────────────────────────────
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+*.secret
+
+# ─── Данные и БД ──────────────────────────────────────────
+*.sql.gz
+*.dump
+*.dump.sql
+backups/
+data/
+pgdata/
+postgres-data/
+
+# ─── Файлы хранилища (S3/MinIO локально) ──────────────────
+minio-data/
+uploads/
+storage/
+
+# ─── Docker ───────────────────────────────────────────────
+docker-compose.override.yml
+
+# ─── Логи ─────────────────────────────────────────────────
+logs/
+*.log
+
+# ─── ОС ───────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ─── IDE ──────────────────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ─── Локальное окружение ──────────────────────────────────
+# Портативный PostgreSQL, его данные и логи (.local/pgsql, .local/pgdata)
+.local/
+
+# Скриншоты проверки вёрстки (снимаются headless-браузером, не часть кода)
+.local-shots/
+
+# ─── Временные ────────────────────────────────────────────
+tmp/
+temp/
+*.tmp
+
+# Временные каталоги офисных инструментов (рендер страниц docx/pdf)
+docs/.dsh-office-*
+
+# Python-кэш (scripts/*.py)
+__pycache__/
+*.pyc

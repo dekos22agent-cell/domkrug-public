@@ -1,0 +1,467 @@
+.backLink {
+  margin-bottom: var(--space-4);
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: var(--text-base);
+  cursor: pointer;
+}
+
+.backLink:hover {
+  color: var(--brand-700);
+}
+
+/* ─── Шапка заявки ────────────────────────────────────────── */
+.header {
+  margin-bottom: var(--space-6);
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.number {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+.flag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  background: color-mix(in srgb, var(--emergency) 10%, transparent);
+  color: var(--emergency);
+  border: 1px solid color-mix(in srgb, var(--emergency) 28%, transparent);
+}
+
+.title {
+  font-size: var(--text-2xl);
+  line-height: var(--leading-2xl);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+
+/* ─── Карточки-секции ─────────────────────────────────────── */
+.card {
+  padding: var(--space-4);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+
+.section {
+  margin-top: var(--space-4);
+}
+
+.sectionTitle {
+  margin-bottom: var(--space-3);
+  font-size: var(--text-lg);
+  line-height: var(--leading-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* ─── Метаданные ──────────────────────────────────────────── */
+.meta {
+  display: grid;
+  gap: var(--space-3);
+}
+
+@media (min-width: 640px) {
+  .meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.metaLabel {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.metaValue {
+  font-size: var(--text-base);
+  color: var(--text-primary);
+  word-break: break-word;
+}
+
+.metaOverdue {
+  color: var(--emergency);
+  font-weight: 500;
+}
+
+/* ─── Описание ────────────────────────────────────────────── */
+.description {
+  font-size: var(--text-base);
+  line-height: var(--leading-base);
+  color: var(--text-primary);
+  white-space: pre-wrap;
+}
+
+.resolution {
+  margin-top: var(--space-4);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--status-done) 7%, transparent);
+  border: 1px solid color-mix(in srgb, var(--status-done) 24%, transparent);
+}
+
+.resolutionTitle {
+  display: block;
+  margin-bottom: var(--space-1);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--status-done);
+}
+
+.parentLink {
+  display: inline-block;
+  margin-top: var(--space-2);
+  font-size: var(--text-sm);
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--brand-600);
+  font-family: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* ─── Действия ────────────────────────────────────────────── */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+
+/* Панель назначения выше кнопок. Без align-self кнопки растягивались
+   до её высоты и превращались в огромные овалы. */
+.actions > * {
+  align-self: flex-start;
+}
+
+.actionPanel {
+  /* Панель всегда отдельной строкой под кнопками, а не сбоку от них. */
+  flex: 0 0 100%;
+  margin-top: var(--space-3);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--bg);
+  border: 1px solid var(--border);
+}
+
+.actionPanelTitle {
+  margin-bottom: var(--space-3);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.actionForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.actionButtons {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.actionButtons > * {
+  flex: 0 0 auto;
+  align-self: center;
+}
+
+.select {
+  width: 100%;
+  min-height: var(--control-height-staff);
+  padding: 0 var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: var(--text-md);
+}
+
+.select:focus {
+  outline: none;
+  border-color: var(--brand-600);
+  box-shadow: 0 0 0 3px var(--brand-100);
+}
+
+.formError {
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--status-rejected) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--status-rejected) 28%, transparent);
+  color: var(--status-rejected);
+  font-size: var(--text-sm);
+  line-height: var(--leading-sm);
+}
+
+/* ─── Комментарии ─────────────────────────────────────────── */
+.comments {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.comment {
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  background: var(--bg);
+  border: 1px solid var(--border);
+}
+
+/* Служебный комментарий отличается и цветом, и подписью */
+.commentInternal {
+  background: color-mix(in srgb, var(--status-progress) 6%, transparent);
+  border-color: color-mix(in srgb, var(--status-progress) 26%, transparent);
+}
+
+.commentHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2);
+  margin-bottom: var(--space-1);
+}
+
+.commentAuthor {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.commentTime {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.internalMark {
+  padding: 1px var(--space-2);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  background: color-mix(in srgb, var(--status-progress) 12%, transparent);
+  color: var(--status-progress);
+  border: 1px solid color-mix(in srgb, var(--status-progress) 30%, transparent);
+}
+
+.commentBody {
+  font-size: var(--text-base);
+  line-height: var(--leading-base);
+  color: var(--text-primary);
+  white-space: pre-wrap;
+}
+
+.composer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+.composerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.checkboxLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  cursor: pointer;
+  /* Зона нажатия: сам чекбокс мелкий, поэтому увеличиваем отступ */
+  min-height: var(--touch-target);
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--brand-600);
+  cursor: pointer;
+}
+
+.emptyComments {
+  padding: var(--space-4) 0;
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+/* ─── Ход заявки (даты в одном месте) ─────────────────────── */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: var(--space-3) var(--space-4);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+
+.timelineRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-1) var(--space-3);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.timelineRow:last-child {
+  border-bottom: none;
+}
+
+/* Фиксированная ширина подписи: даты выстраиваются в колонку и сравниваются
+   глазами, а не ищутся по всей строке */
+.timelineLabel {
+  flex: none;
+  width: 120px;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.timelineValue {
+  flex: 1;
+  min-width: 0;
+  font-size: var(--text-base);
+  line-height: var(--leading-base);
+  color: var(--text-primary);
+}
+
+/* Событие в журнале: смена статуса, назначение исполнителя и т.п. */
+.timelineEvent {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.timelineEvent:last-child {
+  border-bottom: none;
+}
+
+.eventHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-1) var(--space-3);
+}
+
+.eventStatus {
+  flex: none;
+  width: 120px;
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.eventMeta {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.eventComment {
+  margin-left: calc(120px + var(--space-3));
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  background: var(--bg);
+  font-size: var(--text-base);
+  line-height: var(--leading-base);
+  color: var(--text-primary);
+}
+
+@media (max-width: 560px) {
+  .eventComment {
+    margin-left: 0;
+  }
+
+  .eventStatus {
+    width: auto;
+  }
+}
+
+/* Пояснение, что журнал открыт жителю */
+.timelineNote {
+  margin-top: var(--space-2);
+  font-size: var(--text-sm);
+  line-height: var(--leading-sm);
+  color: var(--text-muted);
+}
+
+/* Прежний отдельный блок «История» слит в «Ход заявки» —
+   стили .history* удалены как неиспользуемые. */
+
+
+/* Выбор фото в композере и в форме закрытия заявки */
+.fileRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-top: var(--space-2);
+}
+
+.fileLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--brand-600);
+  cursor: pointer;
+}
+
+.fileLabel input {
+  font-size: var(--text-sm);
+  max-width: 220px;
+}
+
+.fileCount {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.fileCount button {
+  border: none;
+  background: none;
+  color: var(--status-rejected);
+  font: inherit;
+  font-size: var(--text-sm);
+  cursor: pointer;
+}

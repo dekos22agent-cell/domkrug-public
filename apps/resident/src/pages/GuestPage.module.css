@@ -1,0 +1,173 @@
+/**
+ * Экран гостевого доступа: минимум элементов, крупные кнопки.
+ * Человек стоит у двери с телефоном в руке — промахнуться нельзя.
+ */
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 560px;
+  margin: 0 auto;
+  padding: var(--space-5) var(--space-4) var(--space-8);
+}
+
+.card {
+  margin: auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.brandSmall {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--brand-600);
+  letter-spacing: 0.02em;
+}
+
+.brandMark {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-xs);
+  background: var(--liviti-lime);
+  color: var(--liviti-ink);
+  font-family: var(--font-heading);
+  font-size: 15px;
+  line-height: 1;
+}
+
+.subtitle {
+  margin: 0 0 var(--space-2);
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+/* Код вводится по памяти с бумажки — буквы крупные и с разрядкой */
+.codeInput {
+  min-height: 64px;
+  padding: 0 var(--space-4);
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.title {
+  margin: var(--space-1) 0 0;
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.address {
+  margin: var(--space-1) 0 0;
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+}
+
+.expiry {
+  margin: var(--space-1) 0 0;
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.points {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.point {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-4);
+  text-align: left;
+  background: var(--brand-50);
+  border: 1px solid var(--brand-500);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  font: inherit;
+}
+
+.point:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.pointName {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.pointHint {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.pointAction {
+  margin-top: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--brand-700);
+}
+
+.toast {
+  margin: 0;
+}
+
+.hint {
+  margin: var(--space-2) 0 0;
+  text-align: center;
+  font-size: var(--text-xs);
+  line-height: var(--leading-xs);
+  color: var(--text-muted);
+}
+
+.footer {
+  margin: 0;
+  text-align: center;
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+/* Ссылка назад со экрана кода: гость мог открыть его по ошибке */
+.backLine {
+  margin: var(--space-2) 0 0;
+  text-align: center;
+  font-size: var(--text-sm);
+}
+
+.backLink {
+  color: var(--brand-600);
+  text-decoration: none;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}

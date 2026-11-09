@@ -1,0 +1,142 @@
+/* Токены дизайн-системы liviti.
+ *
+ * Источник истины для Foundation. Старые имена (--brand-*, --text-*, --bg,
+ * --surface, --border) сохранены как алиасы: на них завязаны существующие
+ * экраны, и их нельзя ломать одним коммитом. Новые компоненты используют
+ * те же переменные, поэтому миграция идёт без двух параллельных палитр.
+ *
+ * Значения — из UI Kit 1.0 / Brand Book 1.0. Там, где документы расходились,
+ * выбран вариант UI Kit: он ближе к компонентам. Контраст текста проверен
+ * по WCAG 2.2 AA: secondary/muted не светлее #65736F на светлых фонах.
+ */
+
+:root {
+  /* ─── Brand primitives ───────────────────────────────────── */
+  --liviti-ink: #142b35;
+  --liviti-green: #285b50;
+  --liviti-lime: #c5e58a;
+  --liviti-paper: #f5f7f3;
+
+  /* ─── Brand aliases для старых компонентов ───────────────── */
+  --brand-900: var(--liviti-ink);
+  --brand-700: #1f4a41; /* нажатое, тёмные акценты */
+  --brand-600: var(--liviti-green); /* основные кнопки, ссылки */
+  --brand-500: #3a7365; /* ховер, вторичный акцент */
+  --brand-100: #dcebe2; /* подложка активных элементов */
+  --brand-50: #eff5f1; /* фон мягких блоков */
+
+  /* ─── Нейтральные ────────────────────────────────────────── */
+  --text-primary: #202d30;
+  --text-secondary: #65736f; /* AA на #F5F7F3 и #FFFFFF */
+  --text-muted: #65736f; /* подписи и подсказки, не disabled */
+  --text-disabled: #87938e; /* только неактивное, WCAG-исключение */
+  --text-inverse: #ffffff;
+
+  --border: #e3e9e3;
+  --border-strong: #cbd6ce;
+  --bg: var(--liviti-paper);
+  --surface: #ffffff;
+  --surface-soft: #eef3ec;
+  --surface-muted: #e9efeb;
+  --overlay: rgba(13, 31, 35, 0.52);
+
+  /* ─── Статусы: тёмные варианты для AA на светлом ─────────── */
+  --status-new: #35657f; /* информация */
+  --status-accepted: #3a6b7e;
+  --status-assigned: #5b6a65; /* нейтральный */
+  --status-progress: #8a5a1f; /* внимание */
+  --status-waiting: #8a5a1f;
+  --status-done: #2f6b48; /* успех */
+  --status-closed: #5b6a65;
+  --status-rejected: #a83e39; /* ошибка */
+  --emergency: #a83e39;
+
+  /* Фоны и текст бейджей: текст темнее заливки, чтобы проходить AA. */
+  --badge-success-bg: #eaf4ec;
+  --badge-success-text: #2f6b48;
+  --badge-warning-bg: #fff3e2;
+  --badge-warning-text: #8a5a1f;
+  --badge-danger-bg: #fbeceb;
+  --badge-danger-text: #a83e39;
+  --badge-info-bg: #eaf2f7;
+  --badge-info-text: #35657f;
+  --badge-neutral-bg: #eef1ee;
+  --badge-neutral-text: #5b6a65;
+
+  /* ─── Типографика ────────────────────────────────────────── */
+  --font-heading: 'Manrope Variable', 'Manrope', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Inter Variable', 'Inter', 'Segoe UI', system-ui, sans-serif;
+  --font-sans: var(--font-body);
+
+  --text-display: 56px; /* только лендинг/крупные акценты */
+  --text-3xl: 32px; /* заголовок страницы */
+  --text-2xl: 26px; /* заголовок секции */
+  --text-xl: 21px; /* заголовок карточки */
+  --text-lg: 18px;
+  --text-base: 16px;
+  --text-md: 15px;
+  --text-sm: 13px;
+  --text-xs: 12px;
+
+  --leading-display: 60px;
+  --leading-3xl: 40px;
+  --leading-2xl: 32px;
+  --leading-xl: 28px;
+  --leading-lg: 26px;
+  --leading-base: 24px;
+  --leading-md: 22px;
+  --leading-sm: 18px;
+  --leading-xs: 16px;
+
+  /* ─── Отступы: шкала 4px ─────────────────────────────────── */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* ─── Радиусы ────────────────────────────────────────────── */
+  --radius-xs: 6px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 22px;
+  --radius-2xl: 28px;
+  --radius-pill: 999px;
+
+  /* ─── Тени ───────────────────────────────────────────────── */
+  --shadow-sm: 0 2px 8px rgba(20, 43, 53, 0.05);
+  --shadow-md: 0 8px 24px rgba(20, 43, 53, 0.08);
+  --shadow-lg: 0 18px 48px rgba(20, 43, 53, 0.12);
+  --shadow-card: var(--shadow-sm);
+  --shadow-pop: var(--shadow-md);
+
+  /* ─── Фокус и взаимодействие ─────────────────────────────── */
+  --focus: #3a7365;
+  --focus-width: 3px;
+  --duration-hover: 150ms;
+  --duration-press: 100ms;
+  --duration-dropdown: 180ms;
+  --duration-modal: 220ms;
+  --duration-drawer: 260ms;
+
+  /* ─── Размеры ────────────────────────────────────────────── */
+  --control-height-sm: 32px;
+  --control-height-md: 40px;
+  --control-height-lg: 48px;
+  --control-height-resident: 48px; /* житель */
+  --control-height-staff: 40px; /* сотрудники УК */
+  --touch-target: 44px; /* минимальная зона нажатия — всегда */
+  --content-max-resident: 640px;
+  --content-max-staff: 1200px; /* сохраняем текущую плотность до этапа layouts */
+  --content-max-admin: 1440px;
+  --content-max-marketing: 1200px;
+}

@@ -1,0 +1,151 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  /* Минимальная зона нажатия — 44×44; высота задаётся размером. */
+  min-height: var(--control-height-lg);
+  padding: 0 var(--space-5);
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 600;
+  line-height: 1;
+  transition:
+    background-color var(--duration-hover) ease,
+    border-color var(--duration-hover) ease,
+    color var(--duration-hover) ease,
+    transform var(--duration-press) ease;
+  white-space: nowrap;
+}
+
+.button:disabled {
+  opacity: 0.5;
+}
+
+.button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* ─── Размеры ─────────────────────────────────────────────── */
+.sm {
+  min-height: var(--control-height-sm);
+  padding: 0 var(--space-3);
+  font-size: var(--text-sm);
+}
+
+.md {
+  min-height: var(--control-height-md);
+  padding: 0 var(--space-4);
+  font-size: var(--text-md);
+}
+
+.lg {
+  min-height: var(--control-height-lg);
+  padding: 0 var(--space-5);
+  font-size: var(--text-base);
+}
+
+/* ─── Основная кнопка ─────────────────────────────────────── */
+.primary {
+  background: var(--brand-600);
+  color: var(--text-inverse);
+}
+
+.primary:hover:not(:disabled) {
+  background: var(--brand-700);
+}
+
+.primary:active:not(:disabled) {
+  background: var(--brand-700);
+}
+
+/* ─── Второстепенная: мягкая поверхность ──────────────────── */
+.secondary {
+  background: var(--surface-soft);
+  border-color: transparent;
+  color: var(--text-primary);
+}
+
+.secondary:hover:not(:disabled) {
+  background: var(--surface-muted);
+}
+
+/* ─── Outline: прозрачная с рамкой ────────────────────────── */
+.outline {
+  background: transparent;
+  border-color: var(--border-strong);
+  color: var(--text-primary);
+}
+
+.outline:hover:not(:disabled) {
+  background: var(--surface-soft);
+}
+
+/* ─── Прозрачная ──────────────────────────────────────────── */
+.ghost {
+  background: transparent;
+  color: var(--brand-600);
+}
+
+.ghost:hover:not(:disabled) {
+  background: var(--brand-50);
+  color: var(--brand-700);
+}
+
+/* ─── Акцентная: только на тёмных поверхностях ────────────── */
+.accent {
+  background: var(--liviti-lime);
+  color: var(--liviti-ink);
+}
+
+.accent:hover:not(:disabled) {
+  background: #b5d97a;
+}
+
+/* ─── Опасная: удаление, отклонение ───────────────────────── */
+.danger {
+  background: var(--status-rejected);
+  color: var(--text-inverse);
+}
+
+.danger:hover:not(:disabled) {
+  filter: brightness(0.9);
+}
+
+/* У компактного варианта высота 40 и радиус 12 — для плотного УК.
+   Это осознанное исключение из pill для таблиц и панелей. */
+.compact {
+  min-height: var(--control-height-staff);
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: var(--text-md);
+}
+
+/* Невидимая накладка расширяет область нажатия до 44 px. */
+.compact {
+  position: relative;
+}
+
+.compact::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: var(--touch-target);
+  min-height: 100%;
+}
+
+/* На телефоне компактных кнопок нет: палец крупнее курсора. */
+@media (max-width: 640px) {
+  .compact {
+    min-height: var(--touch-target);
+  }
+}
+
+.block {
+  width: 100%;
+}

@@ -1,0 +1,28 @@
+# Единые правила для текстовых файлов в репозитории.
+#
+# Зачем: у каждой машины и у каждого инструмента свой дефолт кодировки и
+# переводов строк. Без явных правил Git «нормализует» файлы по-своему, и
+# кириллица ломается при переходе между машинами.
+#
+# Правило: в репозитории ВСЕГДА LF, в рабочей копии — LF, кроме .ps1
+# (Windows PowerShell корректно работает с CRLF).
+
+* text=auto eol=lf
+
+# Скрипты PowerShell: CRLF + BOM обязателен.
+# BOM здесь не задаётся атрибутом (working-tree-encoding поддерживается не
+# везде) — его проверяет scripts/check-encoding.mjs.
+*.ps1 text eol=crlf
+
+# Бинарные файлы: не трогать
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.ico binary
+*.svg text
+*.woff binary
+*.woff2 binary
+
+# Lock-файлы: машинно-генерируемые, диффы бесполезны
+package-lock.json -diff linguist-generated

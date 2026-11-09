@@ -1,0 +1,35 @@
+# EditorConfig — единые настройки для всех редакторов.
+# https://editorconfig.org
+#
+# Кодировка здесь не «пожелание»: именно её отсутствие дало нам
+# несколько дней проблем с кириллицей на Windows.
+
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 2
+
+# PowerShell: Windows PowerShell 5.1 читает файл без BOM как ANSI
+# и ломается на кириллице. BOM обязателен, переводы строк — CRLF.
+[*.ps1]
+charset = utf-8-bom
+end_of_line = crlf
+indent_size = 4
+
+# Markdown: пробелы в конце строки иногда значимы (перенос строки)
+[*.md]
+trim_trailing_whitespace = false
+
+# Бинарные и генерируемые
+[*.{png,jpg,jpeg,webp,ico,woff,woff2}]
+charset = unset
+end_of_line = unset
+insert_final_newline = unset
+
+[package-lock.json]
+indent_size = 2

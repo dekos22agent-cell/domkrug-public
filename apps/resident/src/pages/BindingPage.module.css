@@ -1,0 +1,342 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+/* ─── Поиск ───────────────────────────────────────────────── */
+.searchForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.searchRow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+@media (min-width: 560px) {
+  .searchRow {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+
+  .searchAddress {
+    flex: 2;
+  }
+
+  .searchNumber {
+    flex: 1;
+  }
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.result {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+}
+
+.resultMain {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.resultAddress {
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.resultMeta {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+/* ─── Мои привязки ────────────────────────────────────────── */
+.binding {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+  transition:
+    border-color 0.12s ease,
+    box-shadow 0.12s ease,
+    transform 0.12s ease;
+}
+
+.binding:hover {
+  border-color: var(--brand-500);
+  box-shadow: var(--shadow-pop);
+  transform: translateY(-1px);
+}
+
+.binding:focus-visible {
+  outline: 2px solid var(--brand-600);
+  outline-offset: 2px;
+}
+
+.bindingHint {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+/* ─── Карточка квартиры в окне ────────────────────────────── */
+.detailList {
+  display: grid;
+  grid-template-columns: minmax(130px, auto) 1fr;
+  gap: var(--space-2) var(--space-4);
+  margin: 0 0 var(--space-4);
+  font-size: var(--text-sm);
+}
+
+.detailList dt {
+  color: var(--text-secondary);
+}
+
+.detailList dd {
+  margin: 0;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.detailActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+@media (max-width: 480px) {
+  .detailList {
+    grid-template-columns: 1fr;
+    gap: var(--space-1);
+  }
+
+  .detailList dd {
+    margin-bottom: var(--space-2);
+  }
+}
+
+/* Верхняя строка: адрес слева, статус справа. Причина отклонения идёт
+   отдельной строкой ниже — иначе она растягивала бы левую колонку и
+   выталкивала статус вниз, ломая привычное расположение. */
+.bindingTop {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.bindingMain {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 0;
+}
+
+.bindingAddress {
+  font-size: var(--text-lg);
+  line-height: var(--leading-lg);
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.bindingTenant {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.bindingSide {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-2);
+}
+
+.statusLine {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  flex: none;
+}
+
+.rejectReason {
+  margin-top: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--status-rejected) 7%, transparent);
+  border: 1px solid color-mix(in srgb, var(--status-rejected) 24%, transparent);
+  color: var(--status-rejected);
+  font-size: var(--text-sm);
+  line-height: var(--leading-sm);
+  width: 100%;
+}
+
+/* ─── Формы ───────────────────────────────────────────────── */
+.formError {
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--status-rejected) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--status-rejected) 28%, transparent);
+  color: var(--status-rejected);
+  font-size: var(--text-sm);
+  line-height: var(--leading-sm);
+}
+
+.roleRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.roleChip {
+  min-height: var(--touch-target);
+  padding: 0 var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: var(--text-base);
+  transition:
+    border-color 0.12s ease,
+    background-color 0.12s ease,
+    color 0.12s ease;
+}
+
+.roleChip:hover {
+  border-color: var(--brand-500);
+  color: var(--brand-700);
+}
+
+.roleChipActive {
+  border-color: var(--brand-600);
+  background: var(--brand-100);
+  color: var(--brand-700);
+  font-weight: 500;
+}
+
+/* ─── Фильтры очереди УК ──────────────────────────────────── */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.filter {
+  min-height: var(--control-height-staff);
+  padding: 0 var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: var(--text-sm);
+}
+
+.filter:hover {
+  border-color: var(--brand-500);
+  color: var(--brand-700);
+}
+
+.filterActive {
+  background: var(--brand-100);
+  border-color: var(--brand-600);
+  color: var(--brand-700);
+  font-weight: 500;
+}
+
+/* ─── Карточка очереди ────────────────────────────────────── */
+.queueItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+
+.queueHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.queueName {
+  font-size: var(--text-lg);
+  line-height: var(--leading-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.queueMeta {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.queueActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+}
+
+.rejectForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+/* ─── Свёрнутый блок добавления ─────────────────────────────────────────── */
+
+.addRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.addHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}

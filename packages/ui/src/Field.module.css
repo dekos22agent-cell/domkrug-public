@@ -1,0 +1,66 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.label {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.input {
+  width: 100%;
+  min-height: var(--control-height-resident);
+  padding: 0 var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: var(--text-base);
+  line-height: var(--leading-base);
+  transition: border-color 0.12s ease;
+}
+
+.input::placeholder {
+  color: var(--text-muted);
+}
+
+.input:hover:not(:disabled) {
+  border-color: var(--brand-500);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--brand-600);
+  box-shadow: 0 0 0 3px var(--brand-100);
+}
+
+.input:disabled {
+  background: var(--bg);
+  color: var(--text-muted);
+}
+
+/* Ошибка поля: рамка + текст ниже. Только цветом не ограничиваемся. */
+.invalid {
+  border-color: var(--status-rejected);
+}
+
+.invalid:focus {
+  border-color: var(--status-rejected);
+  box-shadow: 0 0 0 3px rgba(179, 38, 30, 0.12);
+}
+
+.hint {
+  font-size: var(--text-sm);
+  line-height: var(--leading-sm);
+  color: var(--text-muted);
+}
+
+.error {
+  font-size: var(--text-sm);
+  line-height: var(--leading-sm);
+  color: var(--status-rejected);
+}

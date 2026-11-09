@@ -1,0 +1,22 @@
+.wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + var(--space-2));
+  left: 50%;
+  z-index: 70;
+  width: max-content;
+  max-width: 240px;
+  padding: var(--space-2) var(--space-3);
+  transform: translateX(-50%);
+  border-radius: var(--radius-sm);
+  background: var(--liviti-ink);
+  color: var(--text-inverse);
+  font-size: var(--text-xs);
+  line-height: 1.4;
+  pointer-events: none;
+  box-shadow: var(--shadow-md);
+}

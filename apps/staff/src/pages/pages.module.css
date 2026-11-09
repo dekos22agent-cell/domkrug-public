@@ -1,0 +1,84 @@
+/* Общие стили страниц: заголовок экрана, список, ошибка загрузки. */
+
+.pageHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.pageTitle {
+  font-size: var(--text-2xl);
+  line-height: var(--leading-2xl);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.pageSubtitle {
+  margin-top: var(--space-1);
+  font-size: var(--text-base);
+  line-height: var(--leading-base);
+  color: var(--text-secondary);
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.loadError {
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--status-rejected) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--status-rejected) 28%, transparent);
+  color: var(--status-rejected);
+  font-size: var(--text-base);
+}
+
+.sectionTitle {
+  margin-bottom: var(--space-3);
+  font-size: var(--text-lg);
+  line-height: var(--leading-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.section {
+  margin-top: var(--space-6);
+}
+
+/* Блок-предупреждение: привязка не подтверждена и подобное */
+.notice {
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--brand-50);
+  border: 1px solid var(--brand-100);
+  color: var(--text-primary);
+  font-size: var(--text-base);
+  line-height: var(--leading-base);
+}
+
+.noticeTitle {
+  display: block;
+  margin-bottom: var(--space-1);
+  font-weight: 600;
+  color: var(--brand-700);
+}
+
+.noticeWarning {
+  background: color-mix(in srgb, var(--status-progress) 7%, transparent);
+  border-color: color-mix(in srgb, var(--status-progress) 26%, transparent);
+}
+
+.noticeWarning .noticeTitle {
+  color: var(--status-progress);
+}

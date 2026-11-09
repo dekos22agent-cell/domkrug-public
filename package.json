@@ -1,0 +1,35 @@
+{
+  "name": "liviti",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "dependencies": {
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router-dom": "^7.18.5",
+    "sip.js": "^0.21.2"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "oxlint": "^1.89.0",
+    "typescript": "~7.0.2",
+    "vite": "^8.3.5",
+    "vitest": "^5.1.0"
+  },
+  "scripts": {
+    "dev:landing": "npm --prefix apps/landing run dev",
+    "dev:resident": "npm --prefix apps/resident run dev",
+    "dev:staff": "npm --prefix apps/staff run dev",
+    "dev:ui-kit": "npm --prefix apps/ui-kit run dev",
+    "build": "npm --prefix apps/landing run build && npm --prefix apps/resident run build && npm --prefix apps/staff run build",
+    "build:ui-kit": "npm --prefix apps/ui-kit run build",
+    "lint": "oxlint --config apps/resident/.oxlintrc.json apps/resident/src apps/staff/src apps/landing/src apps/ui-kit/src packages",
+    "test": "npm --prefix apps/resident run test"
+  }
+}

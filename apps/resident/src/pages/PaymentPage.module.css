@@ -1,0 +1,220 @@
+/**
+ * Стили раздела «Оплата».
+ *
+ * Экран простой: карточка с переходом в Систему «Город» и объяснение, что
+ * появится здесь позже. Задача — не притворяться, что оплата уже работает
+ * внутри приложения.
+ */
+
+.card {
+  padding: var(--space-4);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-4);
+}
+
+.cardHead {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+  margin-bottom: var(--space-4);
+}
+
+.cardIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: var(--brand-50);
+  color: var(--brand-600);
+}
+
+.cardTitle {
+  margin: 0 0 var(--space-1);
+  font-size: var(--text-lg);
+  line-height: var(--leading-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.cardText {
+  margin: 0;
+  font-size: var(--text-base);
+  line-height: var(--leading-base);
+  color: var(--text-secondary);
+}
+
+.payButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--control-height-resident);
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--brand-600);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.12s ease;
+}
+
+.payButton:hover {
+  background: var(--brand-700);
+}
+
+.payButton:focus-visible {
+  outline: 2px solid var(--brand-600);
+  outline-offset: 2px;
+}
+
+.note {
+  margin: var(--space-3) 0 0;
+  font-size: var(--text-sm);
+  line-height: var(--leading-sm);
+  color: var(--text-muted);
+}
+
+.list {
+  margin: var(--space-2) 0 0;
+  padding-left: var(--space-4);
+  font-size: var(--text-base);
+  line-height: var(--leading-base);
+  color: var(--text-secondary);
+}
+
+.list li {
+  margin-bottom: var(--space-2);
+}
+
+.list strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+
+/* ─── Начисления и способы оплаты ──────────────────────────────────────────
+   Перенесено из профиля: финансы должны жить там, где оплата. */
+
+.financeGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+@media (min-width: 640px) {
+  .financeGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.financeTile {
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--bg);
+  border: 1px solid var(--border);
+}
+
+.financeTileLabel {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.financeTileValue {
+  margin-top: 2px;
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.financeTileAccent {
+  color: var(--brand-600);
+}
+
+.charge {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--border);
+  font-size: var(--text-sm);
+}
+
+.charge:last-child {
+  border-bottom: none;
+}
+
+.chargeName {
+  color: var(--text-primary);
+}
+
+.chargeMeta {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+}
+
+.chargeAmount {
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--text-primary);
+}
+
+.chargePaid {
+  color: var(--status-done);
+}
+
+.demoNote {
+  margin-top: var(--space-3);
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.bankCard {
+  min-width: 180px;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, #2b3444 0%, #1b2130 100%);
+  color: #fff;
+  font-size: var(--text-sm);
+}
+
+.bankCardNumber {
+  margin-top: var(--space-6);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
+}
+
+.bankCardHint {
+  font-size: var(--text-xs);
+  opacity: 0.7;
+}
+
+.addCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 88px;
+  min-width: 140px;
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--border);
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  background: transparent;
+  cursor: default;
+}

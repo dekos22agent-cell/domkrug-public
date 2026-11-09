@@ -1,0 +1,31 @@
+/* Спиннер загрузки. Размер задаётся через inline-стиль (width/height). */
+.spinner {
+  display: inline-block;
+  flex: none;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.65s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Уважаем настройку «уменьшить движение»: анимация выключается,
+   но индикатор остаётся видимым. */
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation-duration: 2s;
+  }
+}
+
+.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-12) 0;
+  color: var(--brand-600);
+}

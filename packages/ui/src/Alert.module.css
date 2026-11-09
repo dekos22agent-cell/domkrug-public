@@ -1,0 +1,39 @@
+.alert {
+  display: grid;
+  gap: var(--space-1);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid transparent;
+  border-left-width: 4px;
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: var(--text-sm);
+  line-height: var(--leading-sm);
+}
+
+.title {
+  font-weight: 600;
+}
+
+.body {
+  color: var(--text-primary);
+}
+
+.info {
+  border-left-color: var(--status-new);
+  background: var(--badge-info-bg);
+}
+
+.success {
+  border-left-color: var(--status-done);
+  background: var(--badge-success-bg);
+}
+
+.warning {
+  border-left-color: var(--status-progress);
+  background: var(--badge-warning-bg);
+}
+
+.danger {
+  border-left-color: var(--status-rejected);
+  background: var(--badge-danger-bg);
+}

@@ -1,0 +1,53 @@
+.toast {
+  position: fixed;
+  right: var(--space-4);
+  bottom: var(--space-4);
+  z-index: 60;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  max-width: min(420px, calc(100vw - 2 * var(--space-4)));
+  padding: var(--space-3) var(--space-4);
+  border-left: 4px solid var(--brand-600);
+  border-radius: var(--radius-md);
+  background: var(--liviti-ink);
+  color: var(--text-inverse);
+  box-shadow: var(--shadow-lg);
+  font-size: var(--text-sm);
+  line-height: var(--leading-sm);
+}
+
+.success {
+  border-left-color: var(--liviti-lime);
+}
+
+.info {
+  border-left-color: var(--badge-info-text);
+}
+
+.danger {
+  border-left-color: var(--status-rejected);
+}
+
+.text {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.title {
+  font-weight: 600;
+}
+
+.close {
+  flex: none;
+  min-width: var(--touch-target);
+  min-height: var(--touch-target);
+  margin: calc(-1 * var(--space-2)) calc(-1 * var(--space-2)) 0 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-inverse);
+  font-size: var(--text-lg);
+  line-height: 1;
+}

@@ -1,0 +1,41 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text-primary);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.mark {
+  display: block;
+  flex: none;
+  width: var(--logo-mark);
+  height: var(--logo-mark);
+}
+
+.word {
+  font-family: var(--font-heading);
+  font-size: var(--logo-word);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.sm {
+  --logo-mark: 20px;
+  --logo-word: 17px;
+}
+
+.md {
+  --logo-mark: 24px;
+  --logo-word: 20px;
+}
+
+.lg {
+  --logo-mark: 32px;
+  --logo-word: 27px;
+}
+
+.dark {
+  color: var(--text-inverse);
+}
